@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+
+  src: url(./"fonts/Saira_Stencil_One/SairaStencilOne-Regular.ttf");
+}
+
+div {
+  font-family:Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+}/* CSS Document */

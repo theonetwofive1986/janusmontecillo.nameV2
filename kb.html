@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TheJanusProject</title>
+    <!-- Bootstrap -->
+	<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	  <link href="css/font.css" rel="stylesheet">
+<style type="text/css">
+	@import url("css/style.css");
+    </style>
+  </head>
+  <body style="padding-bottom: 70px">
+  	<div class="container-fluid"><img src="images/kbbanner-01.jpg" alt="" width="5339" height="4267" class="img-fluid"/>
+		<br>
+		<br>
+		<br>
+<div class="container">
+  <div>
+  <div id="accordion1" role="tablist">
+    <div class="card">
+      <div class="" role="tab" id="headingOne1">
+        <h5 class="mb-0"> <a data-toggle="collapse" href="#collapseOne1" role="button" aria-expanded="true" aria-controls="collapseOne1"> Ansible - Setting Up Windows Node </a> </h5>
+      </div>
+      <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordion1">
+        <div class="card-body">
+          <pre>
+
+Ansible - Setting Up Windows Node    
+
+#Setting up windows node 
+
+Windows node: 
+		1. Update the powershell to the latest version or download and install powershell-core 7.4 or latest version. 
+		2. Using powershell, install chocolatey the package manager for windows. 
+				i. Run get-executionpolicy 
+				ii. Run Set-ExecutionPolicy Allsigned or Set-ExecutionPolicy Bypass -Scope Process 
+				iii. Run Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')) 
+		3. Set up winrm, see the link. 
+						https://docs.ansible.com/ansible/latest/os_guide/windows_setup.html
+		4. Install python3 
+					
+Master(linux machine where ansible is installed): 
+		1. Create a config file. 
+		2. Create an inventory file. 
+						[windows] 
+						xxx.xxx.xxx.xxx 
+						
+						[windows:vars] 
+						#user account with administrative permission in windows machine.
+						ansible_user=username 
+						#password of user account in windows machine. 
+						ansible_password="password" 
+						#port used by ansible, use 5985 for http and 5986 for https. 
+						ansible_port=5985 
+						#connection type to be use, can be winrm or ssh. 
+						ansible_conneciton=winrm 
+						#protocol to be used. 
+						ansible_winrm_scheme=http 
+						#if certificate will be used. 
+						ansible_winrm_server_cert_validation=ignore 
+						#authentication service. 
+						ansible_winrm_kerberos_delegation=true 
+						#location of python exe file in windows machine. 
+						ansible_python_interpreter=C:/Python312/python.exe 
+		3. Create a playbook named playbook.yaml 
+						--- 
+						
+						- hosts: windows 
+						  tasks: 
+						  
+						  - name: ping windows machine 
+						  	win_ping: 
+		4. Install Python3 and pywinrm
+					
+ </pre>
+     
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="" role="tab" id="headingTwo1">
+        <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseTwo1" role="button" aria-expanded="false" aria-controls="collapseTwo1"> Linux - DNS Server </a> </h5>
+      </div>
+		
+		
+      <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordion1">
+        <div class="card-body"><pre>
+		#Setting up DNS server 
+
+			1. install bind
+				sudo yum install bind
+			2. backup /etc/named.conf
+				sudo cp /etc/named.conf ~/backup/named.bak
+			3. edit /etc/named.conf
+				allow-query { localhost; 172.31.0.0/24; };
+			4. add at the end of the line of /etc/named.conf
+			
+				//forward zone
+			zone "janus.local" IN {
+				 type master;
+				 file "janus.local.db";
+				 allow-update { none; };
+				 allow-query { any; };
+			};
+			
+			//backward zone
+			zone "0.31.172.in-addr.arpa" IN {
+				 type master;
+				 file "janus.local.rev";
+				 allow-update { none; };
+				 allow-query { any; };
+			};
+			
+			5. create forward dns zone 
+			
+			# vim /var/named/janus.local.db
+			$TTL 86400
+			@ IN SOA dns-primary.janus.local. admin.janus.local. (
+															2020011800 ;Serial
+															3600 ;Refresh
+															1800 ;Retry
+															604800 ;Expire
+															86400 ;Minimum TTL
+			)
+			
+			;Name Server Information
+			@ IN NS dns-primary.janus.local.
+			
+			;IP Address for Name Server
+			dns-primary IN A 172.31.0.5
+			
+			;Mail Server MX (Mail exchanger) Record
+			janus.local. IN MX 10 mail.janus.local.
+			
+			;A Record for the following Host name
+			www  IN   A   172.31.0.6
+			mail IN   A   172.31.0.7
+			
+			;CNAME Record
+			ftp  IN   CNAME www.janus.local.
+			
+			6. create reverse dns lookups
+			
+			# vim /var/named/janus.local.rev
+			$TTL 86400
+			@ IN SOA dns-primary.janus.local. admin.janus.local. (
+														2020011800 ;Serial
+														3600 ;Refresh
+														1800 ;Retry
+														604800 ;Expire
+														86400 ;Minimum TTL
+			)
+			;Name Server Information
+			@ IN NS dns-primary.janus.local.
+			dns-primary     IN      A       172.31.0.5
+			
+			;Reverse lookup for Name Server
+			35 IN PTR dns-primary.janus.local.
+			
+			;PTR Record IP address to Hostname
+			50      IN      PTR     www.janus.local.
+			60      IN      PTR     mail.janus.local.
+			
+			7. change the file permission, owner and group owner
+				
+				# chown named:named /var/named/janus.local.db
+				# chown named:named /var/named/janus.local.rev
+			
+			8. check for syntactical error
+			
+				# named-checkconf
+				# named-checkzone janus.local /var/named/janus.local.db
+				# named-checkzone 172.31.0.5 /var/named/janus.local.rev
+			
+			9.restart the named service
+				sudo systemctl restart named
+			
+			10. for client to accesds the dns service
+				# firewall-cmd  --add-service=dns --zone=public  --permanent
+				# firewall-cmd --reload
+			
+			11. test the bind dns
+				# nslookup dns-primary.janus.local
+		</pre></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingThree1">
+        <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseThree1" role="button" aria-expanded="false" aria-controls="collapseThree1">  </a> </h5>
+      </div>
+      <div id="collapseThree1" class="collapse" role="tabpanel" aria-labelledby="headingThree1" data-parent="#accordion1">
+        <div class="card-body"><pre></pre></div>
+      </div>
+    </div>
+  </div>
+</div>
+		  
+		  <br>
+		  <br>
+	    <br>
+        <br>
+<br>
+		  <br>
+		  <br>
+<br>
+	    <br>
+<br>
+		  <br>
+		  <br>
+		  
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="index.html"><img src="images/tjp.png" alt="" width="125" class="img-fluid"/></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  	      <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+  	        <ul class="navbar-nav mr-auto">
+  	          <li class="nav-item"> <a class="nav-link" href="index.html">About <span class="sr-only">(current)</span></a> </li>
+  	          <li class="nav-item active"> <a class="nav-link" href="kb.html">KB</a> </li>
+  	          <li class="nav-item"> <a class="nav-link" href="gallery.html">Gallery</a></li>
+  	          
+  	          <li class="nav-item"> </li>
+            </ul>
+  	        <form class="form-inline my-2 my-lg-0">
+  	          <img src="images/tjp.png" alt="" width="125" height="54" class="img-fluid"/>
+            </form>
+          </div>
+        </nav>
+    </div>
+  	</div>
+<!-- body code goes here -->
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/popper.min.js"></script> 
+  <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
