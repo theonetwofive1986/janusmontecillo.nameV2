@@ -36,9 +36,6 @@ a {
 #navbarSupportedContent1 .navbar-nav.mr-auto .nav-item {
     color: #252525;
 }
-#navbarSupportedContent1 .navbar-nav.mr-auto .nav-item {
-    color: #252525;
-}
 
 nav-link:hover {
 	color:#F1F1F1;
@@ -50,8 +47,9 @@ nav-link:hover {
     background-color: #7C7C7C;
 }
 img01 {
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+
+}
+
+#navbarSupportedContent1 .navbar-nav.mr-auto .nav-item {
+    color: #252525;
 }
