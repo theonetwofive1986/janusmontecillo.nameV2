@@ -46,7 +46,15 @@ nav-link:hover {
 #accordion1 .card #headingTwo1 {
     background-color: #7C7C7C;
 }
-
+#accordion1 .card #headingThree1 {
+    background-color: #7C7C7C;
+}
+#accordion1 .card #headingFour1 {
+    background-color: #7C7C7C;
+}
+#accordion1 .card #headingFive1 {
+    background-color: #7C7C7C;
+}
 #navbarSupportedContent1 .navbar-nav.mr-auto .nav-item {
     color: #252525;
 }
