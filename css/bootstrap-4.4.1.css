@@ -159,8 +159,7 @@ a {
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+    color: #0056b3;
 }
 
 a:not([href]) {
@@ -360,10 +359,14 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
+	
 }
 
 h1, .h1 {
   font-size: 2.5rem;
+	Transition: 0.2s; 
+	
+	
 }
 
 h2, .h2 {
@@ -380,6 +383,7 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: 1.25rem;
+	Transition: 0.2s; 
 }
 
 h6, .h6 {
@@ -1310,6 +1314,7 @@ pre code {
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     max-width: 25%;
+	margin-top: 25%;
   }
   .row-cols-lg-5 > * {
     -ms-flex: 0 0 20%;
@@ -1512,6 +1517,7 @@ pre code {
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     max-width: 25%;
+	 
   }
   .row-cols-xl-5 > * {
     -ms-flex: 0 0 20%;
@@ -10221,4 +10227,6 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
+
 /*# sourceMappingURL=bootstrap.css.map */
