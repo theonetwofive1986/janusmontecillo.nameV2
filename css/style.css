@@ -21,6 +21,7 @@
 
 body p {
     font-family: "Arial Black";
+    color: #000000;
 }
 a:hover {
 
@@ -28,7 +29,7 @@ color:#f1f1f1;
 
 }
 a {
-  color:#252525;
+    color: #252525;
 }
 .navbar-nav.mr-auto .nav-item.active .nav-link {
     color: #252525;
