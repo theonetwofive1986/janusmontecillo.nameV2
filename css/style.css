@@ -4,11 +4,11 @@
 }
 .container-fluid{background:#252525;
 	/* Chrome, Safari */
-	-webkit-animation: bgColor 5s;
+	-webkit-animation: bgColor 10s;
 	/* Firefox */
-	-moz-animation: bgColor 5s;
+	-moz-animation: bgColor 10s;
 	/* Standard Syntax */
-	animation: bgColor 5s;}
+	animation: bgColor 10s;}
 
 .container .navbar.fixed-bottom.navbar-expand-lg.navbar-light.bg-light {
     background-image: -webkit-linear-gradient(270deg,rgba(37,37,37,1.00) 0%,rgba(37,37,37,1.00) 0%,rgba(104,104,104,1.00) 51.30%,rgba(146,144,144,1.00) 71.51%,rgba(195,195,195,1.00) 91.71%);
@@ -81,16 +81,7 @@ nav-link:hover {
 .container-fluid .container #carouselExampleIndicators1 {
     margin-top: 100px;
 }
-.row {/*animate background */
-	background:#252525;
-	/* Chrome, Safari */
-	-webkit-animation: bgColor 5s;
-	/* Firefox */
-	-moz-animation: bgColor 5s;
-	/* Standard Syntax */
-	animation: bgColor 5s;
-}
-.col-xl-4 .card.col-md-4.col-xl-12 {
+.row .col-xl-4 .card.col-md-4.col-xl-12 {
     background-image: -webkit-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
     background-image: -moz-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
     background-image: -o-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
@@ -164,4 +155,3 @@ Define the keyframe and changes
 		background: #252525;
 	}
 }
-
