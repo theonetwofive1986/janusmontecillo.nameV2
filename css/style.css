@@ -32,18 +32,16 @@ body p {
     color: #000000;
     text-decoration: none;
 }
-a {
-    color: #252525;
-}
 .navbar-nav.mr-auto .nav-item.active .nav-link {
-    color: #252525;
-}
-#navbarSupportedContent1 .navbar-nav.mr-auto .nav-item {
-    color: #252525;
+    color: #000000;
+    -webkit-box-shadow: 0 0px;
+    box-shadow: 0 0px;
 }
 
 nav-link:hover {
-	color:#F1F1F1;
+    color: #FFFFFF;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
 }
 #accordion1 .card #headingOne1 {
     background-color: #7C7C7C;
@@ -67,6 +65,10 @@ nav-link:hover {
 }
 #navbarSupportedContent1 .navbar-nav.mr-auto .nav-item {
     color: #252525;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
 }
 .container-fluid .container #carouselExampleIndicators1 {
     margin-top: 100px;
@@ -79,6 +81,13 @@ nav-link:hover {
 }
 
 
+a {
+    color: #252525;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
 a:hover {
-    color: #FFFFFF;
+    color: #F1F1F1;
 }
