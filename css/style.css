@@ -2,7 +2,15 @@
 .container-fluid {
     background-color: #252525;
 }
-.container-fluid .container .navbar.fixed-bottom.navbar-expand-lg.navbar-light.bg-light {
+.container-fluid{background:#252525;
+	/* Chrome, Safari */
+	-webkit-animation: bgColor 5s;
+	/* Firefox */
+	-moz-animation: bgColor 5s;
+	/* Standard Syntax */
+	animation: bgColor 5s;}
+
+.container .navbar.fixed-bottom.navbar-expand-lg.navbar-light.bg-light {
     background-image: -webkit-linear-gradient(270deg,rgba(37,37,37,1.00) 0%,rgba(37,37,37,1.00) 0%,rgba(104,104,104,1.00) 51.30%,rgba(146,144,144,1.00) 71.51%,rgba(195,195,195,1.00) 91.71%);
     background-image: -moz-linear-gradient(270deg,rgba(37,37,37,1.00) 0%,rgba(37,37,37,1.00) 0%,rgba(104,104,104,1.00) 51.30%,rgba(146,144,144,1.00) 71.51%,rgba(195,195,195,1.00) 91.71%);
     background-image: -o-linear-gradient(270deg,rgba(37,37,37,1.00) 0%,rgba(37,37,37,1.00) 0%,rgba(104,104,104,1.00) 51.30%,rgba(146,144,144,1.00) 71.51%,rgba(195,195,195,1.00) 91.71%);
@@ -73,11 +81,26 @@ nav-link:hover {
 .container-fluid .container #carouselExampleIndicators1 {
     margin-top: 100px;
 }
-.row .col-xl-4 .card.col-md-4.col-xl-12 {
+.row {/*animate background */
+	background:#252525;
+	/* Chrome, Safari */
+	-webkit-animation: bgColor 5s;
+	/* Firefox */
+	-moz-animation: bgColor 5s;
+	/* Standard Syntax */
+	animation: bgColor 5s;
+}
+.col-xl-4 .card.col-md-4.col-xl-12 {
     background-image: -webkit-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
     background-image: -moz-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
     background-image: -o-linear-gradient(270deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
     background-image: linear-gradient(180deg,rgba(255,255,255,1.00) 0%,rgba(192,192,192,1.00) 23.83%,rgba(147,147,147,1.00) 41.45%,rgba(151,151,151,1.00) 61.14%,rgba(193,193,193,1.00) 77.72%);
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+	
+	
 }
 
 
@@ -91,3 +114,54 @@ a {
 a:hover {
     color: #F1F1F1;
 }
+
+/* 
+Define this in your CSS 
+.bgColor = Replace it by the name you want to give your animation
+.bgAnimObj = Assign this class to the object you want to apply the effect
+*/
+
+.bgAnimObj {
+	background:#252525;
+	/* Chrome, Safari */
+	-webkit-animation: bgColor 15s;
+	/* Firefox */
+	-moz-animation: bgColor 15s;
+	/* Standard Syntax */
+	animation: bgColor 15s;
+}
+
+/* 
+Define the keyframe and changes
+*/
+
+/* Chrome, Safari */
+@-webkit-keyframes bgColor {
+	from {
+ 		background: #FFFFFF;
+	} 
+	to {
+ 		background: #252525;
+	}
+}
+
+/* Firefox */
+@-moz-keyframes bgColor {
+    from {
+        background: #FFFFFF;
+    }
+    to {
+        background: #252525;
+    }
+}
+
+/* Standard syntax */
+@keyframes bgColor {
+	from {
+		background: #FFFFFF;
+	}
+	to {
+		background: #252525;
+	}
+}
+
