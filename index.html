@@ -1,6 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+	  <!-- Provide a short description of the page. -->
+<meta name="janus montecillo" content="This is the personal webpage of janus montecillo.">
+<!-- This meta tag tells Google not to show the sitelinks search box. -->
+<meta name="google" content="nositelinkssearchbox" />	
+<!-- Control the behavior of search engine crawling and indexing. 
+ The robots meta tag applies to all search engines, while the "googlebot" meta tag is specific to Google. -->
+<meta name="robots" content="..., ..." />
+<meta name="http-equiv" content="X-Robots-Tag : noindex, follow" />
+<meta name="googlebot" content="..., ..." />	
+<!-- Used for verifying ownership of a site. -->
+<meta name="verify" content=""/>
+
+<!-- Open Graph Meta Tags -->
+<!-- Set the canonical URL for the page you are sharing. -->
+<meta property="og:montecillo" content="http://www.janusmontecillo.name">
+<!-- The title to accompany the URL. -->
+<meta property="og:janusmontecillo" content="janusmontecillo"/>
+<!-- Provides Facebook the name that you would like your website to be recognized by. -->
+<meta property="og:janusmontecillo" content="janusmontecillo">
+<!-- Provides Facebook the type of website that you would like your website to be categorized by. -->
+<meta property="og:IT" content="IT">
+<!-- Defines the language, American English is the default. -->
+<meta property="og:locale" content="en-IN">
+<!-- Directs Facebook to use the specified image when the page is shared. -->
+<meta property="og:image" content="image URL">
+<!-- Similar to the meta description tag in HTML. This description is shown below the link title on Facebook. -->
+<meta property="og:janus" content="janus montecillo"/>
+
+<!-- Twitter Card data -->
+<!-- The type of card to be created: summary, photo, or video -->
+<meta name="twitter:card" content="summary" />
+<!-- Title of the Twitter Card -->
+<meta name="twitter:janus" content="janusmontecillo" />
+<!-- Description of content -->
+<meta name="twitter:janus" content="janusmontecillo" />
+<!-- URL of image to use in the card. Used with summary, summary_large_image, player cards -->
+<meta name="twitter:image" content="" />
+	  
+	  
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +58,7 @@
   </head>
   <body style="padding-bottom: 70px">
   	<div class="container-fluid">
-  	  <img src="images/gray-02.jpg" alt="" width="2880" height="1800" class="img-fluid"/>
+  	  <img src="images/janushero.gif" alt="" width="2880" height="1800" class="img-fluid"/>
   	  <div class="container">
 		  
         <div class="row">
@@ -185,14 +224,14 @@
   	         
             </ul>
   	        <form class="form-inline my-2 my-lg-0">
-  	          <img src="images/tjp.png" alt="" width="125" height="54" class="img-fluid"/>
+  	          <span id="time"></span>
             </form>
           </div>
         </nav>
       </div>
   	</div>
 <!-- body code goes here -->
-
+ 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 	<script src="js/jquery-3.4.1.min.js"></script>
@@ -200,5 +239,7 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/popper.min.js"></script> 
   <script src="js/bootstrap-4.4.1.js"></script>
+
+
   </body>
 </html>
