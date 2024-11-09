@@ -167,3 +167,8 @@ Define the keyframe and changes
     padding-bottom: 50px;
     padding-left: 50px;
 }
+.container-fluid .container .row {
+    margin-top: 50px;
+    background-color: #252525;
+    padding-top: 50px;
+}
